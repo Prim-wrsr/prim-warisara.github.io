@@ -83,7 +83,7 @@
                     <p class="query-detail">
                         This SQL query calculates the number of unique countries present in the <code class="sql-keyword">international_debt</code> table. It uses <code class="sql-keyword">COUNT(DISTINCT country_name)</code> to count the distinct values in the <code class="sql-keyword">country_name</code> column, giving a single result representing the total number of countries listed in the dataset.
                     </p>
-                    <img src="../img/sql/num_distinct_countries.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    <img src="/img/sql/num_distinct_countries.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
                     
                     <pre><code class="language-sql">
                         -- Country with the highest debt
@@ -97,7 +97,7 @@
                     <p class="query-detail">
                         This query identifies the country with the highest total debt in the <code class="sql-keyword">international_debt</code> dataset. It groups the data by <code class="sql-keyword">country_name</code> and calculates the total debt using <code class="sql-keyword">SUM(debt)</code>. The results are sorted in descending order by total debt and limited to the top row using <code class="sql-keyword">LIMIT 1</code>, returning the single country with the highest total debt.
                     </p>
-                    <img src="../img/sql/highest_debt_country.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    <img src="/img/sql/highest_debt_country.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
                     
 
                     <pre><code class="language-sql">
@@ -113,7 +113,7 @@
                     <p class="query-detail">
                         This query finds the country with the lowest principal repayments based on the debt indicator <code class="sql-keyword">DT.AMT.DLXF.CD</code>. It filters the dataset using <code class="sql-keyword">WHERE indicator_code = 'DT.AMT.DLXF.CD'</code>, then groups by <code class="sql-keyword">country_name</code> and <code class="sql-keyword">indicator_name</code>. The query returns the minimum repayment value using <code class="sql-keyword">MIN(debt)</code> and limits the result to one row showing the lowest repayment.
                     </p>
-                    <img src="../img/sql/lowest_principal_repayment.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    <img src="/img/sql/lowest_principal_repayment.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
                     
 
                     
