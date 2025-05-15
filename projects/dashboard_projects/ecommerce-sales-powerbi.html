@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="ecommerce-sales-powerbi.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+
+    <title>E-Commerce Sales Dashboard – Power BI Project</title>
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="ecommercesales" id="ecommercesales">
+        <h2 class="heading">
+            E-Commerce Sales Dashboard (Power BI + MS SQL Server)<br>
+            <i><span class="tutorial-source">
+              Practiced via 
+              <span class="highlighted-source">YouTube tutorial by Data Tutorials</span>
+            </span></i>
+          </h2>          
+
+        <div class="ecommercesales-content">
+                <div class="ecommercesales-layer">
+                    <h4>🔍 Project Purpose:</h4>
+                    <p>
+                    This guided hands-on project simulates a real-world business case. The objective was to build an interactive sales performance dashboard for a fictional US-based e-commerce company using data from 2021–2022.
+                    </p>
+                </div>
+            
+            <div class="ecommercesales-detail">
+                <h4>🛠 Tools & Workflow Practiced:</h4>
+                <ul>
+                    <li>Connected Power BI to a SQL Server database</li>
+                    <li>Cleaned and transformed data using Power Query</li>
+                    <li>Built a relational data model with multiple tables</li>
+                    <li>Created a custom Calendar table for time-based analysis</li>
+                    <li>Applied DAX time intelligence functions such as <code>TOTALYTD()</code> and <code>SAMEPERIODLASTYEAR()</code></li>
+                    <li>Calculated KPIs: YTD Sales, Profit, Quantity, and Profit Margin</li>
+                </ul>
+                <br>
+                    <p class="source-link">
+                    <strong>📌 Data Source:</strong> Practiced and guided by
+                    <a href="https://www.youtube.com/@datatutorials1" target="_blank">Data Tutorials on YouTube.</a> Full credit to the original creator.
+                    </p>
+
+                <h4>📊 E-Commerce Sales - Power BI Dashboard:</h4>
+                    <a href="/img/dashboard/ecommerce sales_dashboard.png" data-lightbox="dashboard" data-title="E-Commerce Sales Dashboard">
+                    <img src="/img/dashboard/ecommerce sales_dashboard.png" alt="E-Commerce Sales Dashboard" class="dashboard-img">
+                    </a>
+                  
+                    <a href="/img/dashboard/ecommerce-sales-consumer.png" data-lightbox="dashboard" data-title="E-Commerce Sales Dashboard">
+                    <img src="/img/dashboard/ecommerce-sales-consumer.png" alt="E-Commerce Sales Dashboard" class="dashboard-img">
+                    </a>
+
+                    <a href="/img/dashboard/ecommerce-sales-corporate.png" data-lightbox="dashboard" data-title="E-Commerce Sales Dashboard">
+                        <img src="/img/dashboard/ecommerce-sales-corporate.png" alt="E-Commerce Sales Dashboard" class="dashboard-img">
+                        </a>
+                
+                    <h4>💾 Download the Full Power BI File: <a href="/assets/powerbi/ecommerce-sales-dashboard.pbix" download class="github-link">
+                        Click here to download the full .pbix file
+                    </a> </h4>
+
+                <h4>Visual Design Focus:</h4>
+                <ul>
+                    <li>Used trend lines and area charts to show monthly performance</li>
+                    <li>Added dynamic icons and conditional formatting to highlight growth</li>
+                    <li>Included map visuals (using latitude/longitude) for geographic insights</li>
+                    <li>Visualized product performance and sales distribution with category, region, and shipping type breakdowns</li>
+                </ul>
+                
+
+                <h4> What I Learned</h4>
+                <ul>
+                    <li>Built an end-to-end Power BI reporting workflow using SQL Server and Power Query</li>
+                    <li>Applied DAX and time intelligence functions (e.g. <code>TOTALYTD()</code>, <code>SAMEPERIODLASTYEAR()</code>) to track performance over time</li>
+                    <li>Designed clear, insightful dashboards using trend charts, maps, and category breakdowns</li>
+                    <li>Made the dashboard easier to read by using colors, icons, and a clear layout.</li>
+                </ul>
+            </div>
+
+        </div>
+
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="source-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+        
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

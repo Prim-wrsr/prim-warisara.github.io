@@ -223,15 +223,13 @@ span {
 }
 
 .projects-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     flex-wrap: wrap;
     gap: 2rem;
 }
 
 .projects-container .projects-box {
-    flex: 1 1 30rem;
     background: var(--snd-bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
@@ -256,14 +254,15 @@ span {
 
 .projects-box p {
     font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .projects-box a {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .services-box p {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin: 1rem 0 3rem;
 }
 
@@ -553,6 +552,10 @@ span {
         margin: 4rem;
     }
 
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
     .service h2 {
         margin-bottom: 3rem;
     }
@@ -604,6 +607,14 @@ span {
         margin-top: 4rem;
     }
 
+    .projects-container {
+        grid-template-columns: 1fr;
+      }
+    
+      .projects-box p {
+        font-size: 1.8rem;
+      }
+
     .noisy-ideas-layer h4 {
         font-size: 2rem;
     }
@@ -635,6 +646,22 @@ span {
 
     .logo-img {
         height: 120px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-box p {
+        font-size: 1.6rem;
+    }
+    
+    .projects-box h3 {
+        font-size: 2.2rem;
+    }
+    
+    .projects-box i {
+        font-size: 5.5rem;
     }
 
     .noisy-ideas h2 {

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="dashboard-projects.css">
+
+    <title>Dashboard Projects Based Learning</title>
+
+</head>
+<body>
+    <!-- HEADER DESIGN -->
+    <header class="header">
+      <a href="/index.html" class="logo"><img src="../img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+      <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#projects" class="active">Projects</a>
+        <a href="/index.html#contact">Contact</a>
+    </nav>
+   </header>
+
+     <!-- DASHBOARD SECTION DESIGN -->
+     <section class="dashboard-projects" id="dashboard-projects">
+        <h2 class="heading">My Dashboard Projects<span> Based Learning</span></h2>
+
+        <div class="dashboard-container">
+            <div class="dashboard-box">
+                <img src="../img/dashboard/ecommerce sales_dashboard.png" alt="">
+                <div class="dashboard-layer">
+                    <h4>E-Commerce Sales Dashboard</h4>
+                    <p>Built an interactive Power BI dashboard to explore sales KPIs, trends, and performance insights for an e-commerce business.<br>Followed a guided tutorial by Data Tutorials on YouTube.</p>
+                    <a href="dashboard_projects/ecommerce-sales-powerbi.html" class="btn"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+    
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+      </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+    
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+    
+    </body>
+</html>
