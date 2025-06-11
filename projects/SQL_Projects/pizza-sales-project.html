@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="pizzasales.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+
+    <title>Pizza Sales Analysis – SQL Project</title>
+    <small><em>(Practiced via YouTube tutorial by Data Tutorials)</em></small>
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="pizzasales" id="pizzasales">
+        <h2 class="heading">Pizza Sales Analysis – SQL Project <span>(Youtube tutorial by Data Tutorials)</span></h2>
+
+        <div class="pizzasales-content">
+            <div class="about-img">
+                <img src="" alt="">
+            </div>
+                <div class="pizzasales-layer">
+                    <h4>🔍 Project Overview:</h4><br>
+                    <p>This project analyzes a pizza shop’s sales data using SQL to uncover performance trends. The goal was to identify actionable insights to help increase revenue, reduce waste, and optimize inventory. A Tableau dashboard was created to visualize key business metrics.</p>
+                </div>
+            </div>
+            
+            <div class="pizzasales-detail">
+                <h4>Project Objectives:</h4>
+                <ul>
+                    <li>Analyze pizza sales performance using SQL.</li>
+                    <li>Build a Tableau dashboard to visualize KPIs and trends.</li>
+                </ul>
+
+                <h4>Key Metrics Analyzed:</h4>
+                <ul>
+                    <li>Total Revenue</li>
+                    <li>Average Order Value</li>
+                    <li>Sales by Pizza Size & Category</li>
+                    <li>Hourly Trends in Orders and Pizza Sold</li>
+                    <li>Weekly Trends for Total orders</li>
+                    <li>Top 5 and Bottom 5 Pizzas by Revenue, Total quantity and Total orders</li>
+                </ul>
+                <br>
+                    <p class="source-link">
+                    <strong>📌 Data Source:</strong> Practiced and guided by
+                    <a href="https://www.youtube.com/@datatutorials1" target="_blank">Data Tutorials on YouTube.</a> Full credit to the original creator.
+                    </p>
+
+                <h4>📊 Interactive Tableau Dashboard:</h4>
+                    <div class='tableauPlaceholder' id='viz1743671052726' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;PI&#47;PIZZASALESREPORT_17427436727800&#47;BestWorstSellers&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='PIZZASALESREPORT_17427436727800&#47;BestWorstSellers' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;PI&#47;PIZZASALESREPORT_17427436727800&#47;BestWorstSellers&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1743671052726');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1600px';vizElement.style.height='950px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1600px';vizElement.style.height='950px';} else { vizElement.style.width='100%';vizElement.style.height='2850px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+                
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li><strong>The Thai Chicken Pizza</strong> generated the highest revenue.</li>
+                    <li><strong>The Classic Deluxe Pizza was the most frequently ordered pizza.</strong></li>
+                    <li>Most orders were placed between <strong>12 PM and 1 PM</strong>, and again in the evening from <strong>4 PM to 7 PM</strong>.</li>
+                    <li><strong>Large-sized pizzas</strong> generated the highest revenue overall.</li>
+                    <li>The bottom 5 pizzas accounted for approximately <strong>6.9%</strong> of total sales — highlighting an opportunity to review or improve their performance.</li>
+                </ul>
+
+                <h4>💬 Recommendations:</h4>
+                <ul>
+                    <li>Consider stocking more large-sized pizzas during evening hours to meet demand.</li>
+                    <li>Offer targeted discounts for unpopular pizzas during off-peak hours.</li>
+                    <li>Consider removing underperforming pizzas to reduce inventory costs.</li>
+                </ul>
+
+                
+                <h4>Sample SQL Code:</h4>
+
+                <pre><code class="language-sql">
+                    -- Total Revenue
+                    SELECT SUM(total_price) AS total_revenue
+                    FROM pizza_sales;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Average Order Value
+                    SELECT SUM(total_price) / COUNT(DISTINCT order_id) AS Avg_Order_Value
+                    FROM pizza_sales;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Total Pizzas Sold
+                    SELECT SUM(quantity) AS Total_Pizza_Sold
+                    FROM pizza_sales;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Total Orders
+                    SELECT COUNT(DISTINCT order_id) AS Total_orders
+                    FROM pizza_sales;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Average Pizzas Per Order
+                    SELECT CAST(CAST(SUM(quantity) AS DECIMAL(10,2)) / 
+                    CAST(COUNT (DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAL(10,2)) AS Avg_Pizzas_Per_Order
+                    FROM pizza_sales;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- Hourly Trend for Total Pizzas Sold
+                    SELECT  DATEPART(HOUR, order_time) AS order_hour,
+		            SUM(quantity) AS Total_pizzas_sold
+                    FROM pizza_sales
+                    GROUP BY DATEPART(HOUR, order_time)
+                    ORDER BY DATEPART(HOUR, order_time)
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- Weekly Trend for Total Orders
+                    SELECT DATEPART(ISO_WEEK, order_date) AS week_number, 
+	                YEAR(order_date) AS Order_year,
+	                COUNT(DISTINCT order_id) AS Total_orders
+                    FROM pizza_sales
+                    GROUP BY DATEPART(ISO_WEEK, order_date), YEAR(order_date)
+                    ORDER BY DATEPART(ISO_WEEK, order_date), YEAR(order_date)
+                </code></pre>
+                    
+                <pre><code class="language-sql">
+                    --Top 5 Best Sellers by Revenue
+                    SELECT TOP 5 pizza_name,
+                           SUM(total_price) AS Total_Revenue
+                    FROM pizza_sales
+                    GROUP BY pizza_name
+                    ORDER BY Total_Revenue DESC
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Lowest 5 pizzas by Revenue
+                    SELECT TOP 5 pizza_name,
+                            SUM(total_price) AS Total_Revenue
+                    FROM pizza_sales
+                    GROUP BY pizza_name
+                    ORDER BY Total_Revenue ASC
+                </code></pre>
+
+                <h4>💾 View full SQL queries on GitHub:</h4>
+                <p><a href="https://github.com/Prim-wrsr/pizza-sales-sql" target="_blank" class="github-link">
+                👉 Click here to view all SQL queries on GitHub</a></p>
+
+            </div>
+
+        </div>
+
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="source-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+        
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

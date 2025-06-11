@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="international_debt.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+    <title>International Debt Statistics – SQL Project (DataCamp Practice)</title>
+
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="debt" id="debt">
+        <h2 class="heading">International Debt Statistics – SQL Project <span>(DataCamp Practice)</span></h2>
+
+        <div class="debt-content">
+            <h4>Summary:</h4><br>
+            <p>This project was completed as a practice exercise through DataCamp's virtual environment. Using the <code class="sql-keyword">international_debt</code> table, Queries include <code class="sql-keyword">COUNT(DISTINCT)</code>, <code class="sql-keyword">SUM( )</code>, and <code class="sql-keyword">ORDER BY</code> to analyze debt by country.</p>
+        
+            <div class="debt-layer">
+                <h4>🔍 Project Overview:</h4><br>
+                <p class="source-link">The dataset was sourced from <a href="https://datacamp.com" target="_blank">DataCamp</a> and reflects the debt profile of developing countries. 
+                    Each entry includes the country name, debt indicator, and monetary value in current USD. 
+                </p>
+                <br>
+                <p><i>The goal was to explore:</i></p>
+                <ul>
+                    <li>The number of countries listed in the database.</li>
+                    <li>Which country has the highest amount of debt.</li>
+                    <li>The country with the lowest repayments.</li>
+                  </ul>
+
+                <img src="/img/sql/international_debt.jpg" alt="" class="international-debt-image" style="max-width: 50%; border-radius: 5px;">
+                <p class="credit-img"><a href="https://www.freepik.com/free-photo/coins-paper-money-globe-white-statistic-form-background_1168190.htm#fromView=image_search&page=1&position=0&uuid=8ef60907-25b6-4232-8e68-6e0028963b7b">Photo by xb100 on Freepik</a></p>
+                <br>
+                <br>
+                <p>Humans not only take debts to manage necessities. A country may also take debt to manage its economy. For example, infrastructure spending is one costly ingredient required for a country's citizens to lead comfortable lives. The World Bank is the organization that provides debt to countries.</p>             
+            
+                <h4>Table Overview: <code class="sql-keyword">international_debt</code></h4>
+                    <table class="international-debt-table" border="1" cellpadding="6" cellspacing="0">
+                        <thead>
+                        <tr><th>Column</th><th>Description</th><th>Type</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>country_name</td><td>Name of the country</td><td>VARCHAR</td></tr>
+                        <tr><td>country_code</td><td>Code representing the country</td><td>VARCHAR</td></tr>
+                        <tr><td>indicator_name</td><td>Debt indicator description</td><td>VARCHAR</td></tr>
+                        <tr><td>indicator_code</td><td>Debt indicator code</td><td>VARCHAR</td></tr>
+                        <tr><td>debt</td><td>Value of the debt indicator (USD)</td><td>FLOAT</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>SQL Queries:</h4>
+                    <pre><code class="language-sql">
+                        -- Number of distinct countries
+                        SELECT COUNT(DISTINCT country_name) AS total_distinct_countries
+                        FROM international_debt;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This SQL query calculates the number of unique countries present in the <code class="sql-keyword">international_debt</code> table. It uses <code class="sql-keyword">COUNT(DISTINCT country_name)</code> to count the distinct values in the <code class="sql-keyword">country_name</code> column, giving a single result representing the total number of countries listed in the dataset.
+                    </p>
+                    <img src="/img/sql/num_distinct_countries.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    
+                    <pre><code class="language-sql">
+                        -- Country with the highest debt
+                        SELECT country_name, SUM(debt) AS total_debt
+                        FROM international_debt
+                        GROUP BY country_name
+                        ORDER BY total_debt DESC
+                        LIMIT 1;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This query identifies the country with the highest total debt in the <code class="sql-keyword">international_debt</code> dataset. It groups the data by <code class="sql-keyword">country_name</code> and calculates the total debt using <code class="sql-keyword">SUM(debt)</code>. The results are sorted in descending order by total debt and limited to the top row using <code class="sql-keyword">LIMIT 1</code>, returning the single country with the highest total debt.
+                    </p>
+                    <img src="/img/sql/highest_debt_country.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    
+
+                    <pre><code class="language-sql">
+                        -- Country with the lowest repayments
+                        SELECT country_name, indicator_name, MIN(debt) AS lowest_repayment
+                        FROM international_debt
+                        WHERE indicator_code = 'DT.AMT.DLXF.CD'
+                        GROUP BY country_name, indicator_name
+                        ORDER BY lowest_repayment ASC
+                        LIMIT 1;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This query finds the country with the lowest principal repayments based on the debt indicator <code class="sql-keyword">DT.AMT.DLXF.CD</code>. It filters the dataset using <code class="sql-keyword">WHERE indicator_code = 'DT.AMT.DLXF.CD'</code>, then groups by <code class="sql-keyword">country_name</code> and <code class="sql-keyword">indicator_name</code>. The query returns the minimum repayment value using <code class="sql-keyword">MIN(debt)</code> and limits the result to one row showing the lowest repayment.
+                    </p>
+                    <img src="/img/sql/lowest_principal_repayment.png" alt="" class="debt-table" width="1200" border-radius: 8px;>
+                    
+
+                    
+            </div>
+
+            <div class="debt-detail">
+                <h4>Key Finding:</h4>
+                <ul>
+                    <li>The database contains 124 countries, highlighting the wide scope of developing nations included and offering a strong foundation for debt analysis across regions.</li>
+                    <li>The country with the highest total debt holds a significantly larger amount compared to others. This may indicate a higher need for infrastructure investment, economic support, or reliance on international borrowing.</li>
+                    <li>The lowest principal repayment (based on the DT.AMT.DLXF.CD indicator) may reflect debt forgiveness, early repayment, or overall lower debt obligations, offering insights into each country’s repayment strategies or financial relief status.</li>
+                </ul>
+            </div>
+
+            <p class="project-credit">
+                <em>Thanks to <a href="https://www.datacamp.com" target="_blank">DataCamp</a> for providing the dataset and learning environment for this SQL project.</em>
+            </p>
+              
+
+        </div>
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+    
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+        
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

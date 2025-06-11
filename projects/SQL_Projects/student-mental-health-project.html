@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="student_mental_health.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+    <title>Student Mental Health – SQL Project (DataCamp Practice)</title>
+
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="mental-health" id="mental-health">
+        <h2 class="heading">Student Mental Health – SQL Project <span>(DataCamp Practice)</span></h2>
+
+        <div class="mental-health-content">
+            <h4>Summary:</h4><br>
+            <p>
+                This project was completed as a practice exercise through DataCamp's virtual environment. This project explores whether international students’ length of stay impacts their mental health. Using SQL queries such as 
+                <code class="sql-keyword">AVG()</code>, <code class="sql-keyword">ROUND()</code>, <code class="sql-keyword">GROUP BY</code>, and 
+                <code class="sql-keyword">ORDER BY</code>, we analyzed their depression (<code class="sql-keyword">PHQ-9</code>), social connectedness (<code class="sql-keyword">SCS</code>), and acculturative stress (<code class="sql-keyword">ASISS</code>) scores.
+            </p>
+        
+            <div class="mental-health-layer">
+                <h4>🔍 Project Overview:</h4><br>
+                <p class="source-link">The dataset was sourced from <a href="https://datacamp.com" target="_blank">DataCamp</a> and reflects the results of a mental health study conducted at a Japanese international university in 2018. 
+                    The study focused on both international and domestic students and included scores related to depression, social connectedness, and acculturative stress. 
+                </p>
+                <br>
+                <p><i>The goal was to explore:</i></p>
+                <ul>
+                    <li>Whether the <code class="sql-keyword">length of stay</code> is related to mental health outcomes among international students.</li>
+                    <li>How average depression (<code class="sql-keyword">PHQ-9</code>), social connectedness (<code class="sql-keyword">SCS</code>), and acculturative stress (<code class="sql-keyword">ASISS</code>) scores vary by stay duration.</li>
+                    <li>Using <code class="sql-keyword">GROUP BY</code>, <code class="sql-keyword">AVG()</code>, and <code class="sql-keyword">ROUND()</code> functions to analyze the trends.</li>
+                  </ul>
+
+                <img src="/img/sql/mental_health_survey.jpg" alt="" class="mental-health-image" style="max-width: 50%; border-radius: 5px;">
+                <p class="credit-img"><a href="https://www.freepik.com/free-photo/woman-with-hands-together-talking-with-counselor_11241676.htm#fromView=search&page=1&position=1&uuid=7a439ac5-96c1-4849-894f-1366b05008d9&query=psychology">Photo by Freepik</a>
+                </p>
+            
+                <h4>Table Overview: <code class="sql-keyword">students</code></h4>
+                    <table class="mental-health-table" border="1" cellpadding="6" cellspacing="0">
+                        <thead>
+                            <tr><th>Field Name</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>inter_dom</td><td>Types of students (international or domestic)</td></tr>
+                            <tr><td>japanese_cate</td><td>Japanese language proficiency</td></tr>
+                            <tr><td>english_cate</td><td>English language proficiency</td></tr>
+                            <tr><td>academic</td><td>Current academic level (undergraduate or graduate)</td></tr>
+                            <tr><td>age</td><td>Current age of student</td></tr>
+                            <tr><td>stay</td><td>Current length of stay in years</td></tr>
+                            <tr><td>todep</td><td>Total score of depression (PHQ-9 test)</td></tr>
+                            <tr><td>tosc</td><td>Total score of social connectedness (SCS test)</td></tr>
+                            <tr><td>toas</td><td>Total score of acculturative stress (ASISS test)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>SQL Queries:</h4>
+                    <pre><code class="language-sql">
+                        -- AVERAGE MENTAL HEALTH DIAGNOSTIC SCORES OF THE INTERNATIONAL STUDENTS
+                        SELECT stay,
+                            COUNT(*) AS count_int,
+                            ROUND(AVG(todep), 2) AS average_phq,
+                            ROUND(AVG(tosc), 2) AS average_scs,
+                            ROUND(AVG(toas), 2) AS average_as	   
+                        FROM students
+                        WHERE LOWER(inter_dom) = 'inter'
+                        AND stay IS NOT NULL
+                        GROUP BY stay
+                        ORDER BY stay DESC
+                        LIMIT 9;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        The SQL queries returned 9 distinct lengths of stay, each with average scores for mental health indicators — helping us understand how time spent abroad may relate to well-being.
+                    </p>
+                    <div>
+                        <img src="/img/sql/mental_health_diagnostic_score.png" alt="" class="mental-health-img" width="800" border-radius: 8px;>
+                    </div>
+                    
+                    <div>
+                        <img src="/img/sql/mental-health-diagnostic-scores-by-length-of-stay.png" alt="" class="mental-health-chart" width="800" border-radius: 8px;>
+                    </div>
+            </div>
+
+            <div class="mental-health-detail">
+                <h4>Key Finding:</h4>
+                <ul>
+                    <li>Students with longer stays tend to report lower depression scores (PHQ-9).</li>
+                    <li>Social connectedness increases gradually over time.</li>
+                    <li>Acculturative stress tends to decrease the longer students stay.</li>
+                </ul>
+            </div>
+
+            <p class="project-credit">
+                <em>Thanks to <a href="https://www.datacamp.com" target="_blank">DataCamp</a> for providing the dataset and learning environment for this SQL project.</em>
+            </p>
+        </div>
+    
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+    
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+        
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+    
+
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

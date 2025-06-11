@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="python-projects.css">
+
+    <title>Python Projects Based Learning</title>
+
+</head>
+<body>
+    <!-- HEADER DESIGN -->
+    <header class="header">
+      <a href="/index.html" class="logo"><img src="../img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+      <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#projects" class="active">Projects</a>
+        <a href="/index.html#contact">Contact</a>
+    </nav>
+   </header>
+
+     <!-- DASHBOARD SECTION DESIGN -->
+     <section class="python-projects" id="python-projects">
+        <h2 class="heading">My Python Projects<span> Based Learning</span></h2>
+
+        <div class="python-container">
+            <div class="python-box">
+                <img src="../img/blinkit.png" alt="">
+                <div class="python-layer">
+                    <h4>Blinkit Analysis in Python</h4>
+                    <p>This project analyzes Blinkit's sales data using Python, pandas, and seaborn. It includes KPIs, cleaning steps, and multiple business insights.</p>
+                    <a href="https://github.com/Prim-wrsr/data-analysis-python-project/tree/main/Blinkit_Analysis" class="btn"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+
+            <div class="python-box">
+                <img src="../img/skill_demand_all_data_roles.png" alt="Data Job Market Analysis">
+                <div class="python-layer">
+                    <h4>Data Analyst Job Skills (US Market)</h4>
+                    <p>Analyzed real job market data in the US to explore in-demand skills, salary trends, and optimal tools for data analysts. Practiced via Luke Barousse's Python course.</p>
+                    <a href="https://github.com/Prim-wrsr/Python-Data-Analytics-Course/tree/main/3_Project" class="btn" target="_blank">
+                    <i class="fa-solid fa-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+      </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+    
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+    
+    </body>
+</html>

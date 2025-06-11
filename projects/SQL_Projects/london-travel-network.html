@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="london_travel_network.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+    <title>Exploring London's Travel Network – SQL Project (DataCamp Practice)</title>
+
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="london-travel-network" id="london-travel-network">
+        <h2 class="heading">Exploring London's Travel Network – SQL Project <span>(DataCamp Practice)</span></h2>
+
+        <div class="london-travel-network-content">
+            <h4>Summary:</h4><br>
+            <p>
+                This project was completed as a practice exercise through DataCamp's virtual environment. The project explores patterns in London’s public transport usage using SQL queries on journey data from Transport for London (TfL). 
+                Using SQL operations such as <code class="sql-keyword">SUM()</code>, <code class="sql-keyword">ROUND()</code>, <code class="sql-keyword">GROUP BY</code>, and <code class="sql-keyword">ORDER BY</code>, we analyzed journey volume trends across multiple transport types.
+            </p>
+        
+            <div class="london-travel-network-layer">
+                <h4>🔍 Project Overview:</h4><br>
+                <p class="source-link">The dataset was sourced from <a href="https://datacamp.com" target="_blank">DataCamp</a> and reflects public transport journey data maintained by Transport for London (TfL).
+                    This includes usage statistics for various methods of transport such as the London Underground, Emirates Airline, and DLR (Docklands Light Railway).
+                </p>
+                <br>
+                <p><i>The goal was to explore:</i></p>
+                <ul>
+                    <li>Which <code class="sql-keyword">transport types</code> were most popular overall.</li>
+                    <li>Which months were the most used for the <code class="sql-keyword">Emirates Airline</code>.</li>
+                    <li>Which years had the <code class="sql-keyword">lowest usage</code> of Underground & DLR combined.</li>
+                </ul>
+
+                <img src="/img/sql/london.jpg" alt="" class="london-travel-network-image" style="width: 50%; border-radius: 5px;">
+                <p class="credit-img"><a href="https://www.freepik.com/free-photo/big-ben-clock_946257.htm#fromView=image_search&page=1&position=40&uuid=612b5016-ea52-4443-a3a9-a66a70fa4054">Photo by bedneyimages on Freepik</a>
+                </p>
+            
+                <h4>Table Overview: <code class="sql-keyword">TFL.JOURNEYS</code></h4>
+                <table class="london-travel-network-table" border="1" cellpadding="6" cellspacing="0">
+                    <thead>
+                        <tr><th>Column</th><th>Description</th><th>Data Type</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>MONTH</td><td>Month in number format, e.g., 1 equals January</td><td>INTEGER</td></tr>
+                        <tr><td>YEAR</td><td>Year</td><td>INTEGER</td></tr>
+                        <tr><td>DAYS</td><td>Number of days in the given month</td><td>INTEGER</td></tr>
+                        <tr><td>REPORT_DATE</td><td>Date that the data was reported</td><td>DATE</td></tr>
+                        <tr><td>JOURNEY_TYPE</td><td>Method of transport used</td><td>VARCHAR</td></tr>
+                        <tr><td>JOURNEYS_MILLIONS</td><td>Millions of journeys, measured in decimals</td><td>FLOAT</td></tr>
+                    </tbody>
+                </table>
+
+                    <h4>SQL Queries:</h4>
+                    <pre><code class="language-sql">
+                        -- most_popular_transport_types
+                        SELECT JOURNEY_TYPE,
+                            SUM(JOURNEYS_MILLIONS) AS TOTAL_JOURNEYS_MILLIONS
+                        FROM TFL.JOURNEYS
+                        GROUP BY JOURNEY_TYPE
+                        ORDER BY TOTAL_JOURNEYS_MILLIONS DESC;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This query calculates the total number of journeys made by each transport type by summing up the <code class="sql-keyword">JOURNEYS_MILLIONS</code> column.
+                        Results are grouped by <code class="sql-keyword">JOURNEY_TYPE</code> and sorted in descending order to identify the most popular transport modes in London.
+                    </p>
+                      
+                    <img src="/img/sql/most-popular-transport-types.png" alt="" class="london-travel-network-img" width="800" border-radius: 8px;>
+                    
+                    <img src="/img/sql/total-journeys-by-transport-type.png" alt="" class="london-travel-network-chart" width="600" border-radius: 8px;>
+                    
+                    <pre><code class="language-sql">
+                        -- emirates_airline_popularity
+                        SELECT MONTH,
+                            YEAR,
+                            ROUND(SUM(JOURNEYS_MILLIONS), 2) AS ROUNDED_JOURNEYS_MILLIONS
+                        FROM TFL.JOURNEYS
+                        WHERE JOURNEY_TYPE = 'Emirates Airline' AND JOURNEYS_MILLIONS IS NOT NULL
+                        GROUP BY MONTH, YEAR
+                        ORDER BY ROUNDED_JOURNEYS_MILLIONS DESC
+                        LIMIT 5;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This query retrieves the top 5 month-year combinations where the Emirates Airline had the highest number of journeys.
+                        The query uses <code class="sql-keyword">ROUND()</code> to format the values and <code class="sql-keyword">GROUP BY</code> on <code class="sql-keyword">MONTH</code> and <code class="sql-keyword">YEAR</code>.
+                    </p>
+
+                    <img src="/img/sql/emirates-airline-popularity.png" alt="" class="london-travel-network-img" width="800" border-radius: 8px;>
+
+                    <pre><code class="language-sql">
+                        -- least_popular_years_tube
+                        SELECT YEAR,
+                            JOURNEY_TYPE,
+                            SUM(JOURNEYS_MILLIONS) AS TOTAL_JOURNEYS_MILLIONS
+                        FROM TFL.JOURNEYS
+                        WHERE JOURNEY_TYPE LIKE '%Underground%' OR JOURNEY_TYPE LIKE '%DLR%'
+                        AND JOURNEYS_MILLIONS IS NOT NULL
+                        GROUP BY YEAR, JOURNEY_TYPE
+                        ORDER BY TOTAL_JOURNEYS_MILLIONS ASC
+                        LIMIT 5;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This query identifies the five lowest-performing years in terms of journey volume for transport types containing <code class="sql-keyword">Underground</code> or <code class="sql-keyword">DLR</code>.
+                        <code class="sql-keyword">SUM()</code> is used to aggregate journey volume by year and type.
+                    </p>
+
+                    <img src="/img/sql/least-popular-years-tube.png" alt="" class="london-travel-network-img" width="800" border-radius: 8px;>
+                    
+                    <img src="/img/sql/least-popular-years-underground-dlr-chart.png" alt="" class="london-travel-network-chart" width="500" border-radius: 8px;>
+                    
+            </div>
+
+            <div class="london-travel-network-detail">
+                <h4>Key Finding:</h4>
+                <ul>
+                  <li>
+                    London's buses remain the most widely used mode of transport overall.
+                    <ul style="margin-left: 20px;" class="source-link">
+                      <li>Why? (Based on analysis and supported by
+                        <a href="https://www.londontravelwatch.org.uk/blog/who-uses-the-busand-why/" target="_blank">Source: London TravelWatch</a>)
+                      </li>
+                      <ul style="margin-left: 30px">
+                            <li>Buses have the most extensive coverage across London, reaching areas not served by the Underground or DLR.</li>
+                            <li>They are more affordable and accessible compared to other transport types.</li>
+                            <li>Preferred by local residents and daily commuters, especially in outer boroughs.</li>
+                            <li>Buses continued operating during events like tube strikes or infrastructure maintenance.</li>
+                        </ul>
+                    </ul>
+                  </li>
+                  <li>Emirates Airline experienced peaks in journey numbers in the warmer months, suggesting tourist traffic.</li>
+                  <li>Underground & DLR usage saw the lowest volumes in early 2000s and during pandemic-related disruptions.</li>
+                </ul>
+            </div>
+            
+
+            <p class="project-credit">
+                <em>Thanks to <a href="https://www.datacamp.com" target="_blank">DataCamp</a> for providing the dataset and learning environment for this SQL project.</em>
+            </p>
+              
+
+        </div>
+    
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+
+
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+    
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="sydney_expense.css">
+
+    <!-- LIGHTBOX ZOOM POPUP -->
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+
+
+    <title>Sydney Living Expense</title>
+</head>
+<body>
+    <!-- HEADER DESIGN -->
+     <header class="header">
+      <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+      <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+      <nav class="navbar">
+          <a href="/index.html">Home</a>
+          <a href="/index.html#about">About</a>
+          <a href="/index.html#projects" class="active">Projects</a>
+          <a href="/index.html#contact">Contact</a>
+      </nav>
+     </header>
+
+      <!-- INTRO SECTION DESIGN -->
+      <section class="tracked-expense" id="tracked-expense">
+        <h2>My Living Expense in Sydney</h2>
+      
+        <div class="image-gallery">
+            <img src="/img/sydneyficant.jpeg" alt="">
+            <img src="/img/coogee.jpeg" alt="">
+            <img src="/img/Firstfleet_park.jpeg" alt="">
+            <img src="/img/bondi_doggy.jpeg" alt="">
+            <img src="/img/myfood.jpeg" alt="">
+        </div>
+      
+        <p>
+          Living in Sydney ain’t cheap — my wallet’s been crying since day one 😂 But hey, don’t just take my word for it!
+        </p>
+        <p>
+          I call myself 'generation 0' — my family helped me get started, but once I landed in Sydney, I had to hustle on my own. Every $AUD spent meant something to me. I came to Australia as an international student with no idea what was waiting ahead — but I knew I had to plan smart and stay aware.
+        </p>
+        
+        <p>
+          Before I arrived, I promised myself I’d track my living expenses — not just to survive, but to better understand where my money was going. 
+        </p>
+        <p>
+          Sydney is known as one of the most expensive cities in Australia, especially for housing and everyday living — and yep, it lives up to the hype. I wanted to make my “soft landing” as smooth as possible and avoid big surprises.
+        </p>
+        
+        <p>
+            So here’s what happened: I tracked every expense during my first 8 months.
+            Then, to make sense of it all, I turned the data into a Power BI dashboard. This is just <strong>phase one</strong>
+            <i>— I plan to expand it later to reflect a full picture of my 2-year journey. 📊</i>
+        </p>
+      
+        <h3>Explore the dashboard and some things I learned along the way!</h3>
+      
+        <a href="/img/sydney_expense_dashboard.png" data-lightbox="dashboard" data-title="Sydney Living Expense Dashboard">
+            <img src="/img/sydney_expense_dashboard.png" alt="Sydney Expense Dashboard" class="dashboard-img">
+          </a>
+          
+      
+        <h3>What I’ve Learned from My Spending</h3>
+        <ul>
+          <li>Yes — housing costs are the heaviest burden. No surprise there. Ouch!!</li>
+          <li>In September, I finally cracked the code: cooking at home saves me. That month, I had to pay tuition, so I tried eating in more — and it worked!</li>
+        </ul>
+
+        <p class="insight-note">...until tuition was paid and I treated myself back to eating out. 😅 It’s nice to discover how to reduce costs — but I still love exploring good food.</p>        
+      
+        <!-- BACK BUTTON HERE -->
+        <button onclick="history.back()" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
+
+      </section>
+      
+       <!-- FOOTER SECTION -->
+       <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+      <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+    <!-- Lightbox 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
+  
+
+   </body>
+</html>

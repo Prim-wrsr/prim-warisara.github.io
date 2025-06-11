@@ -1,0 +1,10 @@
+# Ignore big project files
+projects/python_data_project/2_Advanced/job_data.pkl
+projects/python_data_project/2_Advanced/jobs.db
+*.pkl
+*.db
+
+*.db
+*.pkl
+*.csv
+*.parquet

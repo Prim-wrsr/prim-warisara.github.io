@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="emissions.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+    <title>Industry Carbon Emissions Analysis – SQL Project (DataCamp Practice)</title>
+
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="emissions" id="emissions">
+        <h2 class="heading">Industry Carbon Emissions Analysis – SQL Project <span>(DataCamp Practice)</span></h2>
+
+        <div class="emissions-content">
+            <h4>Summary:</h4><br>
+            <p>This project was completed as a practice exercise through DataCamp's virtual environment. Using the <code class="sql-keyword">product_emissions</code> data set, I queried the most recent year's data to calculate the total carbon footprint (PCF) and number of unique companies across industry groups. The analysis used SQL techniques such as <code class="sql-keyword">GROUP BY</code>, <code class="sql-keyword">COUNT(DISTINCT)</code>, <code class="sql-keyword">SUM( )</code>, and <code class="sql-keyword">ORDER BY</code> to identify the industries and countries contributing the most to product-related emissions.</p>
+        
+            <div class="emissions-layer">
+                <h4>🔍 Project Overview:</h4><br>
+                <p class="source-link">This project explores <strong> industry-level carbon emissions</strong> using real-world data from 
+                    <a href="https://www.nature.com/articles/s41597-022-01178-9" target="_blank">The Carbon Catalogue on Nature.com</a>. Data accessed via DataCamp’s learning environment for educational purposes.
+                </p> 
+                    <ul>
+                        The dataset contains:
+                        <ul style="margin-left: 30px;">
+                            <li>866 product carbon footprints (PCFs)</li>
+                            <li>Reported by 145 companies</li>
+                            <li>Spanning 30 industry groups</li>
+                            <li>Across 28 countries</li>
+                            <li>Covering data between 2013–2017</li>
+                        </ul>
+                    </ul>
+
+                    <p>
+                    Each <strong>PCF</strong> quantifies greenhouse gas emissions (in kg CO₂e) associated with a specific product — including emissions from upstream supply chains, company operations, and downstream distribution or disposal.
+                    </p>
+                
+                    <ul>
+                        <i><strong>The goal was to:</strong></i>
+                        <ul style="margin-left: 30px;">
+                            <li>Identify industries with the highest total emissions</li>
+                            <li>Understand how carbon footprints are distributed across companies within sectors</li>
+                            <li>Explore country-level contributions to global product-related emissions</li>
+                        </ul>
+                    </ul>
+                    <br>
+                    <p class="why-it-matters">
+                        <span role="img" aria-label="lightbulb"></span> <strong>Why it matters?</strong><br>
+                        Product-related emissions — from food to sneakers to electronics — make up <strong>over 75% of global emissions</strong>, offering a valuable lens to understand where reductions are needed most.
+                    </p>
+                <br>
+                <br>
+
+                <img src="/img/sql/industry_carbon_emission.jpg" alt="" class="industry-image" style="max-width: 40%; border-radius: 5px;">
+                <p class="credit-img"><a href="https://www.freepik.com/free-photo/aerial-drone-view-chisinau-thermal-station-with-smoke-coming-out-tube-buildings-roads-fog-air-moldova_12875412.htm#fromView=image_search&page=1&position=0&uuid=271474bd-be5f-4448-9ae7-e0aa5ed5f005&query=industry+carbon">Photo by @frimufilms on Freepik</a></p>
+                <br>
+                <br>
+                <p>Since product-related emissions — from food to sneakers to electronics — contribute to more than <strong>75% of global emissions</strong>, this dataset offers an excellent opportunity to explore where these emissions occur and how much each industry contributes.</p>             
+            
+                <h4>Table Overview: <code class="sql-keyword">product_emissions</code></h4>
+                    <table class="industry-table" border="1" cellpadding="6" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Column</th>
+                                <th>Data Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>VARCHAR</td><td>Product ID</td></tr>
+                            <tr><td>year</td><td>INT</td><td>Reporting year</td></tr>
+                            <tr><td>product_name</td><td>VARCHAR</td><td>Product name</td></tr>
+                            <tr><td>company</td><td>VARCHAR</td><td>Reporting company</td></tr>
+                            <tr><td>country</td><td>VARCHAR</td><td>Country of incorporation</td></tr>
+                            <tr><td>industry_group</td><td>VARCHAR</td><td>Industry group classification</td></tr>
+                            <tr><td>weight_kg</td><td>NUMERIC</td><td>Product weight</td></tr>
+                            <tr><td>carbon_footprint_pcf</td><td>NUMERIC</td><td>Carbon footprint in kg CO₂e</td></tr>
+                            <tr><td>upstream_percent_total_pcf</td><td>VARCHAR</td><td>Emissions from supply chain</td></tr>
+                            <tr><td>operations_percent_total_pcf</td><td>VARCHAR</td><td>Emissions from production</td></tr>
+                            <tr><td>downstream_percent_total_pcf</td><td>VARCHAR</td><td>Emissions from distribution/use</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>SQL Queries:</h4>
+                    <pre><code class="language-sql">
+                        -- Total carbon footprint by industry group (most recent year)
+                        SELECT industry_group,
+                            COUNT(DISTINCT company) AS num_companies,
+                            ROUND(SUM(carbon_footprint_pcf), 1) AS total_industry_footprint
+                        FROM product_emissions
+                        WHERE year = (SELECT MAX(year) FROM product_emissions)
+                        GROUP BY industry_group
+                        ORDER BY total_industry_footprint DESC;
+                    </code></pre>
+
+                    <p class="query-detail">
+                        This SQL query analyzes the <code class="sql-keyword">product_emissions</code> table to identify which industry groups contributed the most to carbon emissions in the most recent year available. It uses 
+                        <code class="sql-keyword">COUNT(DISTINCT company)</code> to count unique companies in each industry group and <code class="sql-keyword">SUM(carbon_footprint_pcf)</code> to calculate the total industry footprint. The results are grouped by<code class="sql-keyword">industry_group</code>, rounded to one decimal place, and sorted in descending order of total emissions.
+                    </p>
+
+                    <h4>Carbon Emissions by Industry Group (Most Recent Year)</h4>
+                    <img src="/img/sql/emissions_table.png" alt="" class="carbon-table" width="1200" border-radius: 8px;>
+
+                    <h4>📊 Total Carbon Footprint by Industry Group</h4>
+                    <img src="/img/sql/carbonfootprint_industry.png" alt="" class="carbon-barchart" width="1200" border-radius: 8px;>
+
+                    <pre><code class="language-sql">
+                        -- Total carbon footprint by country (most recent year)
+                        SELECT year,
+                            country,
+                            COUNT(DISTINCT company) AS num_companies,
+                            ROUND(SUM(carbon_footprint_pcf), 1) AS total_country_footprint
+                        FROM product_emissions
+                        WHERE year = (SELECT MAX(year) FROM product_emissions)
+                        GROUP BY year, country
+                        ORDER BY total_country_footprint DESC;
+                    </code></pre>
+                    <br>
+                    <p class="query-detail">
+                        This query retrieves the total carbon footprint contributed by each country in the most recent year of available data to identify which countries had the highest overall emissions.
+                    </p>
+                    
+                    <h4>Carbon Emissions by Each Country (Most Recent Year)</h4>
+                    <img src="/img/sql/carbon_contributed_by_countries.png" alt="" class="carbon-table" width="1200" border-radius: 8px;>
+            </div>
+
+            <div class="emissions-detail">
+                <h4>Key Finding:</h4>
+                <ul>
+                    <li><strong>Materials</strong> and <strong>Capital Goods</strong> industries had the highest carbon emissions overall.</li>
+                    <li><strong>Technology Hardware & Equipment</strong> had a large but more evenly distributed footprint across several companies.</li>
+                    <li>Even industries with only a few companies contributed significantly to emissions — small groups can still have a big environmental impact.</li>
+                    <li>Japan, India, and the UK were among the top contributors to product-related emissions.
+                    
+                        <ul style="margin-left: 20px;" class="source-link">
+                            <li>Why are these countries among the top emitters?
+                                <ul style="margin-left: 30px">
+                                    <li><strong>Japan</strong> relies heavily on industrial manufacturing and fossil fuel imports due to limited domestic energy resources. 
+                                    <span class="source-link">Source: 
+                                        <a href="https://www.iea.org/countries/japan" target="_blank">IEA – Japan Profile</a>
+                                    </span>
+                                    </li>
+                                    <li><strong>India</strong> has rapidly growing energy demands, a large industrial base, and increasing urbanization.
+                                    <span class="source-link">Source: 
+                                        <a href="https://www.iea.org/countries/india" target="_blank">IEA – India Profile</a>
+                                    </span>
+                                    </li>
+                                    <li><strong>The UK</strong> shows high levels of consumption and embedded emissions from imported goods, even as domestic emissions decline.
+                                    <span class="source-link">Source: 
+                                        <a href="https://www.carbonbrief.org/analysis-why-the-uks-co2-emissions-have-fallen-38-since-1990/" target="_blank">Carbon Brief – UK Emissions Analysis</a>
+                                    </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="project-credit">
+                <em>Thanks to <a href="https://www.datacamp.com" target="_blank">DataCamp</a> for providing the dataset and learning environment for this SQL project.</em>
+            </p>
+              
+
+        </div>
+
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+    
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle navbar menu
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+        
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+    </script>
+        
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+    
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>

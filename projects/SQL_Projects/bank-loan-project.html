@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="bankloan.css">
+
+    <!-- Highlight.js CSS theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+
+
+    <title>Bank Loan Analysis– SQL Project</title>
+    <small><em>(Practiced via YouTube tutorial by Data Tutorials)</em></small>
+</head>
+<body>
+
+    <!-- HEADER DESIGN -->
+    <header class="header">
+        <a href="/index.html" class="logo"><img src="/img/prim-warisara.png" alt="Prim Warisara Logo" class="logo-img" /></a>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <nav class="navbar">
+            <a href="/index.html">Home</a>
+            <a href="/index.html#about">About</a>
+            <a href="/index.html#projects" class="active">Projects</a>
+            <a href="/index.html#contact">Contact</a>
+        </nav>
+     </header>
+
+     <!-- SQL SECTION DESIGN -->
+     <section class="bankloan" id="bankloan">
+        <h2 class="heading">Bank Loan Analysis – SQL Project <span>(Youtube tutorial by Data Tutorials)</span></h2>
+
+        <div class="bankloan-content">
+                <div class="bankloan-layer">
+                    <h4>🔍 Project Overview:</h4><br>
+                    <p>This project analyzes a bank's loan portfolio to help monitor performance and make smarter lending decisions. Using SQL for data analysis and Tableau for visualization, I created interactive dashboard to explore loan trends, repayment behavior, and borrower profiles.</p>
+                </div>
+        </div>
+            
+            <div class="bankloan-detail">
+                <h4>Project Objectives:</h4>
+                <ul>
+                    <li>Track loan application trends and funded amounts.</li>
+                    <li>Monitor repayments and calculate average interest rates.</li>
+                    <li>Evaluate borrower financial health using debt-to-income ratio (DTI).</li>
+                    <li>Identify the ratio of good loans vs bad loans.</li>
+                    <li>Visualize trends by month, region, loan purpose and more.</li>
+                </ul>
+
+                <br>
+                    <p class="source-link">
+                    <strong>📌 Data Source:</strong> Practiced and guided by
+                    <a href="https://www.youtube.com/@datatutorials1" target="_blank">Data Tutorials on YouTube.</a> Full credit to the original creator.
+                    </p>
+
+                <h4>📊 Interactive Tableau Dashboard:</h4>
+                <div class='tableauPlaceholder' id='viz1743771164602' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BA&#47;BANKLOANREPORT_17431766090250&#47;SUMMARY&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='BANKLOANREPORT_17431766090250&#47;SUMMARY' /><param name='tabs' value='yes' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BA&#47;BANKLOANREPORT_17431766090250&#47;SUMMARY&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1743771164602');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1600px';vizElement.style.height='950px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1600px';vizElement.style.height='950px';} else { vizElement.style.width='100%';vizElement.style.height='4550px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li>Most loan applications were for <strong>debt consolidation</strong> and <strong>credit card refinancing</strong>.</li>
+                    <li>Borrowers with <strong>10+ years of employment</strong> had the <strong>lowest default rate</strong>.</li>
+                    <li>While 36-month loans make up the majority of total loans, 60-month loans carry <strong>greater risk</strong> and <strong>higher funding per borrower</strong></li>
+                        <br>
+                        <ul style="margin-left: 20px;">
+                            <li>Borrowers with <strong>60-month loans</strong> received an average funded amount of <strong>$15,738</strong>, compared to <strong>$9,669</strong> for 36-month loans.</li>
+                            <li><strong>22.34%</strong> of 60-month loans were <strong>Charged Off</strong>, while only <strong>10.71%</strong> of 36-month loans were.</li>
+                            <li>60-month borrowers were <strong>more than twice as likely</strong> to default compared to 36-month borrowers.</li>
+                            <br>
+                            <img src="../img/sql/bankloans_term.jpg" alt="">
+                            <ul style="margin-left: 30px">
+                                <li><u>Lenders may consider implementing tighter approval criteria or risk-based pricing to reduce potential losses.</u></li>
+                            </ul>
+                        </ul>
+                </ul>
+
+                <h4>💬 Recommendations:</h4>
+                <ul>
+                    <li>Consider tightening approval criteria for long-term loans to reduce risk exposure.</li>
+                    <li>Use risk-based pricing (e.g., higher interest rates) for loans with higher default probability.</li>
+                </ul>
+
+                
+                <h4>Sample SQL Queries:</h4>
+
+                <pre><code class="language-sql">
+                    --Total Loan Applications
+                    SELECT COUNT(id) AS Total_Applications 
+                    FROM bank_loan_data;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- MTD Loan Applications
+                    SELECT COUNT(id) AS Total_Applications 
+                    FROM bank_loan_data
+                    WHERE MONTH(issue_date) = 12;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- PMTD Loan Applications
+                    SELECT COUNT(id) AS Total_Applications 
+                    FROM bank_loan_data
+                    WHERE MONTH(issue_date) = 11;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    --Total Funded Amount
+                    SELECT SUM(loan_amount) AS Total_Funded_Amount 
+                    FROM bank_loan_data;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- MTD Total Funded Amount
+                    SELECT SUM(loan_amount) AS Total_Funded_Amount 
+                    FROM bank_loan_data
+                    WHERE MONTH(issue_date) = 12;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- PMTD Total Funded Amount
+                    SELECT SUM(loan_amount) AS Total_Funded_Amount 
+                    FROM bank_loan_data
+                    WHERE MONTH(issue_date) = 11;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- Total Amount Received
+                    SELECT SUM(total_payment) AS Total_Amount_Collected 
+                    FROM bank_loan_data;
+                </code></pre>
+                    
+                <pre><code class="language-sql">
+                    -- PMTD Total Amount Received
+                    SELECT SUM(total_payment) AS Total_Amount_Collected 
+                    FROM bank_loan_data
+                    WHERE MONTH(issue_date) = 11;
+                </code></pre>
+                
+                <pre><code class="language-sql">
+                    -- Average Interest Rate
+                    SELECT AVG(int_rate)*100 AS Avg_Int_Rate 
+                    FROM bank_loan_data;
+                </code></pre>
+
+                <h4>💾 View full SQL queries on GitHub:</h4>
+                <p><a href="https://github.com/Prim-wrsr/bank-loan-report-sql" target="_blank" class="github-link">
+                👉 Click here to view all SQL queries on GitHub</a></p>
+
+            </div>
+
+        </div>
+
+    <!-- BACK BUTTON HERE -->
+    <button onclick="history.back()" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+
+    </section>
+
+     <!-- FOOTER SECTION -->
+     <footer class="footer">
+        <div class="footer-text">
+          <p>Copyright &copy; 2025 by Prim Warisara. All Rights Reserved. Design inspiration from <a href="https://www.youtube.com/@HeresTheCode" class="credit-link" target="_blank" rel="">Here's the Code!</a> on YouTube.</p>
+        </div>
+    </footer>
+    
+    <script>
+    // Toggle navbar menu
+    const menuIcon = document.querySelector('#menu-icon');
+    const navbar = document.querySelector('.navbar');
+    
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle('fa-xmark');
+        navbar.classList.toggle('active');
+    };
+    </script>
+    
+    <!-- SCROLL REVEAL JS -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- TYPED JS -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <!-- MAIN JS -->
+    <script src="JS/main.js"></script>
+
+
+
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <!-- Load SQL language support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/sql.min.js"></script>
+
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+    
+</body>
+</html>
